@@ -1,6 +1,4 @@
 describe('Buka reporty.sa dalam Bahasa Inggris', () => {
-
-    
   //masuk ke halaman web uatama
   it('Sign Up Sucssess', () => {
     Cypress.on('uncaught:exception', (err, runnable) => {
@@ -12,20 +10,18 @@ describe('Buka reporty.sa dalam Bahasa Inggris', () => {
   // Atau abaikan semua uncaught exception
   return false;
 });
-// Pastikan URL API sesuai dengan yang digunakan di aplikasi
-cy.intercept('POST', '/api/verify-recaptcha', (req) => {
-  req.reply({
-    statusCode: 200,
-    body: { success: true }
-  });
-}).as('recaptchaBypass');
+  
     cy.visit('https://www.reporty.sa/sign-up');
     cy.get('#a_lang').click();    
     cy.get('#a_langen').click();   
     cy.get('#email').type('ida_test2130@gmail.com');
     cy.get('#password').type('Semut888');
     cy.get('#confirm_password').type('Semut888');
+    // Contoh menggunakan Cypress
+cy.get('iframe[src*="recaptcha"]').its('0.contentDocument').then(doc => {
+  cy.wrap(doc.getElementById('recaptcha-anchor')).click();
+});
     cy.get('#sign-up-button').click();   
-    cy.wait('@recaptchaBypass');                  
+                  
   });
 });

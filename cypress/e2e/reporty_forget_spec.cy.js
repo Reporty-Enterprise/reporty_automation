@@ -16,20 +16,15 @@ describe('Buka reporty.sa dalam Bahasa Inggris', () => {
 
     // 2. Klik tombol bahasa Inggris (dengan ID #a_langen)
     cy.get('#a_lang').click();    
-    cy.get('#a_langen').click();  
-    //3. Home page
-    cy.get('#a_home').click();
-    cy.get('#a_about0').click();                    
+    cy.get('#a_langen').click();                    
   });
 
   // Masuk ke halaman Login
-  it('Login Sukses', () => {
+  it('Forget Passord', () => {
     // Langkah-langkah pengujian di sini
     cy.visit('https://reporty.sa/login');
-    cy.get('#a_lang').click();    
-    cy.get('#a_langen').click();   
-    cy.get('#login_email').type('idacharismaya@gmail.com');
-    cy.get('#password').type('Semut123');
-    cy.get('#submit').click();
+    cy.get('#a_passwordrequest').click(); 
+    cy.get('#email').type('idacharismaya@gmail.com'); 
+    cy.get('.btn btn-primary').click();
   });
 });
